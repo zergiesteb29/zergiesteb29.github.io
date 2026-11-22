@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forge Athletics — Strength &amp; conditioning gym</title>
+<meta name="description" content="Strength training, HIIT classes and personal coaching. Your first week is free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ====== EDIT YOUR BRAND HERE ====== */
+  :root{
+    --bg:#0c0c0d;
+    --panel:#161618;
+    --ink:#f4f4f5;
+    --muted:#a1a1aa;
+    --accent:#e4ff3a;     /* electric lime */
+    --hot:#ff4d2e;        /* energy orange */
+    --line:rgba(255,255,255,.1);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Archivo,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.95}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.06em;border:0;cursor:pointer;transition:transform .15s,background .2s;clip-path:polygon(0 0,100% 0,100% 70%,92% 100%,0 100%)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-lime{background:var(--accent);color:#0c0c0d}
+  .btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line);clip-path:none}
+  .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+  section{padding:96px 0}
+
+  header{position:absolute;inset:0 0 auto;z-index:10}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:80px}
+  .logo{font-family:Anton,sans-serif;font-size:26px;letter-spacing:.04em;text-transform:uppercase}
+  .logo span{color:var(--accent)}
+  .links{display:flex;gap:30px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .links a:hover{color:var(--ink)}
+  .nav .btn{padding:12px 18px;font-size:13px}
+
+  .hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:130px 0 70px;
+    background:
+      linear-gradient(180deg,rgba(12,12,13,.2),var(--bg) 92%),
+      repeating-linear-gradient(115deg,transparent 0 60px,rgba(255,255,255,.025) 60px 61px),
+      radial-gradient(ellipse 60% 60% at 80% 30%,rgba(228,255,58,.18),transparent 70%),
+      radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,77,46,.15),transparent 70%),
+      var(--bg)}
+  .big{font-size:clamp(64px,13vw,190px);letter-spacing:-.01em}
+  .big .o{-webkit-text-stroke:2px var(--ink);color:transparent}
+  .big .l{color:var(--accent)}
+  .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:28px}
+  .hero p{max-width:440px;color:var(--muted);font-size:18px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero .wrap{position:relative;z-index:1}
+  .plate{position:absolute;right:-60px;top:70px;width:min(30vw,340px);opacity:.55;z-index:0;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,#0c0c0d 0 12%,#2a2a2e 12.5% 14%,#1b1b1e 14.5% 40%,#2a2a2e 40.5% 42%,#141416 42.5% 70%,#2a2a2e 70.5% 72%,#1b1b1e 72.5%);
+    box-shadow:0 40px 80px rgba(0,0,0,.6),inset 0 0 0 6px #232326}
+  .plate::after{content:"20 KG";position:absolute;inset:0;display:grid;place-items:center;font-family:Anton,sans-serif;font-size:clamp(20px,3vw,34px);color:var(--accent);letter-spacing:.1em;transform:translateY(-34%)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats div{padding:28px 20px;border-right:1px solid var(--line)}
+  .stats div:last-child{border-right:0}
+  .stats b{display:block;font-family:Anton,sans-serif;font-size:44px;font-weight:400;color:var(--accent);line-height:1}
+  .stats span{color:var(--muted);font-size:14px;text-transform:uppercase;letter-spacing:.08em}
+
+  .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:44px}
+  .head h2{font-size:clamp(44px,7vw,84px);margin-top:10px}
+  .head p{color:var(--muted);max-width:380px}
+
+  .programs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .prog{background:var(--panel);padding:30px;position:relative;overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .2s}
+  .prog:hover{transform:translateY(-4px)}
+  .prog .n{position:absolute;top:18px;right:22px;font-family:Anton,sans-serif;font-size:90px;color:rgba(255,255,255,.05);line-height:1}
+  .prog .bar{position:absolute;left:0;top:0;height:5px;width:40%;background:var(--accent)}
+  .prog:nth-child(2) .bar{background:var(--hot);width:60%}
+  .prog:nth-child(3) .bar{width:80%}
+  .prog h3{font-size:36px;margin-bottom:10px}
+  .prog p{color:var(--muted);font-size:15px}
+  .prog small{display:block;margin-top:16px;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+  .schedule{background:var(--panel)}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{padding:16px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td b{font-weight:700}
+  .pill{display:inline-block;padding:3px 10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(228,255,58,.12);color:var(--accent)}
+  .pill.h{background:rgba(255,77,46,.14);color:var(--hot)}
+  .table-wrap{overflow-x:auto}
+
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  .plan{border:1px solid var(--line);padding:34px;display:flex;flex-direction:column}
+  .plan.best{background:var(--accent);color:#0c0c0d;border-color:var(--accent)}
+  .plan h3{font-size:30px}
+  .price{font-family:Anton,sans-serif;font-size:64px;line-height:1;margin:18px 0 6px}
+  .price small{font-family:Archivo,sans-serif;font-size:15px;font-weight:600;opacity:.7}
+  .plan ul{list-style:none;display:grid;gap:10px;margin:20px 0 30px;flex:1;font-size:15px}
+  .plan li::before{content:"■ ";color:var(--accent);font-size:10px;vertical-align:middle}
+  .plan.best li::before{color:#0c0c0d}
+  .plan .btn{justify-content:center}
+  .plan.best .btn{background:#0c0c0d;color:var(--accent)}
+  .plan .muted{color:var(--muted);font-size:14px}
+  .plan.best .muted{color:#3f3f12}
+
+  .coach{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .coach-img{aspect-ratio:4/5;position:relative;overflow:hidden;padding:34px;display:flex;flex-direction:column;justify-content:space-between;background:
+      repeating-linear-gradient(135deg,transparent 0 22px,rgba(255,255,255,.03) 22px 23px),
+      linear-gradient(160deg,transparent 62%,var(--accent) 62.2% 66%,transparent 66.2%),
+      var(--panel)}
+  .coach-img .k{font-family:Anton,sans-serif;font-size:clamp(90px,14vw,160px);line-height:.85;color:var(--accent)}
+  .coach-img .k small{display:block;font-size:.32em;line-height:1.05;margin-top:10px;color:var(--ink);letter-spacing:.04em}
+  .coach-img .card{background:var(--bg);border:1px solid var(--line);padding:18px 20px;max-width:260px}
+  .coach-img .card b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:30px;color:var(--accent)}
+  .coach-img .card span{color:var(--muted);font-size:14px}
+  .coach h2{font-size:clamp(40px,6vw,72px);margin:12px 0 18px}
+  .coach p{color:var(--muted);margin-bottom:14px}
+  .quote{border-left:4px solid var(--accent);padding:6px 0 6px 18px;margin-top:24px;font-size:20px;font-weight:600}
+  .quote small{display:block;color:var(--muted);font-size:14px;font-weight:500;margin-top:6px}
+
+  .join{background:var(--accent);color:#0c0c0d;padding:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .join h2{font-size:clamp(44px,7vw,88px)}
+  .join p{font-size:18px;font-weight:500;margin-top:10px}
+  form{display:grid;gap:12px}
+  input,select{width:100%;padding:15px 16px;border:2px solid #0c0c0d;background:#fff;font:inherit;font-size:15px;color:#0c0c0d}
+  input:focus,select:focus{outline:3px solid var(--hot)}
+  form .btn{justify-content:center;background:#0c0c0d;color:var(--accent)}
+
+  footer{padding:36px 0;color:var(--muted);font-size:13px}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media (max-width:900px){
+    .links{display:none}
+    .plate{width:180px;top:90px;right:-30px;opacity:.6}
+    .stats{grid-template-columns:1fr 1fr}
+    .stats div:nth-child(2){border-right:0}
+    .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .programs,.plans,.coach,.join{grid-template-columns:1fr}
+    .join{padding:34px 22px}
+    section{padding:72px 0}
+    .coach-img{max-width:380px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Forge<span>.</span></a>
+    <nav class="links">
+      <a href="#programs">Programs</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <a href="#join" class="btn btn-lime">Free week</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="plate" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="tag">Strength · HIIT · Coaching</span>
+    <h1 class="big">Get <span class="o">strong.</span><br>Stay <span class="l">strong.</span></h1>
+    <div class="hero-row">
+      <p>Coached classes, real equipment and a community that shows up. Your first week is on us — no contract, no pressure.</p>
+      <div class="cta">
+        <a href="#join" class="btn btn-lime">Claim free week →</a>
+        <a href="#schedule" class="btn btn-ghost">See schedule</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="stats">
+    <div><b>1,200+</b><span>Members</span></div>
+    <div><b>45</b><span>Classes / week</span></div>
+    <div><b>12</b><span>Certified coaches</span></div>
+    <div><b>5 AM</b><span>Opens daily</span></div>
+  </div>
+</div>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="tag">Programs</span><h2>Train with<br>a plan.</h2></div>
+      <p>Every program is coached, scalable to your level and built to show progress in 8 weeks.</p>
+    </div>
+    <div class="programs">
+      <div class="prog"><span class="bar"></span><span class="n">01</span><h3>Strength</h3><p>Squat, press, deadlift. Small groups, perfect technique, steady progress.</p><small>All levels</small></div>
+      <div class="prog"><span class="bar"></span><span class="n">02</span><h3>HIIT burn</h3><p>45 minutes of intervals that leave you soaked and smiling.</p><small>Fat loss · Cardio</small></div>
+      <div class="prog"><span class="bar"></span><span class="n">03</span><h3>1:1 coaching</h3><p>A personal plan, nutrition guidance and weekly check-ins.</p><small>Fastest results</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="schedule" class="schedule">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="tag">This week</span><h2>Class<br>schedule.</h2></div>
+      <p>Book from the app or at the front desk. Drop-ins welcome when spots are open.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+        <tbody>
+          <tr><td><b>6:00 AM</b></td><td><span class="pill">Strength</span></td><td><span class="pill h">HIIT</span></td><td><span class="pill">Strength</span></td><td><span class="pill h">HIIT</span></td><td><span class="pill">Strength</span></td></tr>
+          <tr><td><b>12:15 PM</b></td><td><span class="pill h">HIIT</span></td><td>Mobility</td><td><span class="pill h">HIIT</span></td><td>Mobility</td><td><span class="pill h">HIIT</span></td></tr>
+          <tr><td><b>6:00 PM</b></td><td><span class="pill">Strength</span></td><td><span class="pill">Strength</span></td><td><span class="pill h">HIIT</span></td><td><span class="pill">Strength</span></td><td>Open gym</td></tr>
+          <tr><td><b>7:30 PM</b></td><td><span class="pill h">HIIT</span></td><td>Boxing</td><td><span class="pill">Strength</span></td><td>Boxing</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="tag">Membership</span><h2>Pick your<br>plan.</h2></div>
+      <p>No sign-up fees. Pause or cancel anytime with 30 days notice.</p>
+    </div>
+    <div class="plans">
+      <div class="plan"><h3>Open gym</h3><p class="muted">Train on your own</p><div class="price">$39<small>/mo</small></div><ul><li>24/7 floor access</li><li>Lockers &amp; showers</li><li>1 intro session</li></ul><a href="#join" class="btn btn-ghost">Start free week</a></div>
+      <div class="plan best"><h3>Unlimited classes</h3><p class="muted">Most popular</p><div class="price">$79<small>/mo</small></div><ul><li>All coached classes</li><li>Open gym included</li><li>Monthly progress check</li><li>Member app</li></ul><a href="#join" class="btn">Start free week</a></div>
+      <div class="plan"><h3>1:1 coaching</h3><p class="muted">Personal program</p><div class="price">$199<small>/mo</small></div><ul><li>4 private sessions</li><li>Nutrition plan</li><li>Unlimited classes</li></ul><a href="#join" class="btn btn-ghost">Book a consult</a></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap coach">
+    <div class="coach-img">
+      <div class="k">8<small>weeks to visible results</small></div>
+      <div class="card"><b>94%</b><span>of members hit their first goal in their first 3 months</span></div>
+    </div>
+    <div>
+      <span class="tag">Head coach</span>
+      <h2>Coaching,<br>not counting reps.</h2>
+      <p>Every coach at Forge is certified and trained to adapt each workout to your body, your goals and your schedule.</p>
+      <p>Beginners start with a free intro session to learn the basics safely.</p>
+      <div class="quote">“I lost 12 kg and deadlifted my bodyweight for the first time. The coaches never let me quit.”<small>— Laura M., member since 2024</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="join" style="padding-top:0">
+  <div class="wrap">
+    <div class="join">
+      <div>
+        <h2>Your first<br>week is free.</h2>
+        <p>Leave your details and we’ll text you to book your intro session.</p>
+        <p style="margin-top:18px;font-size:15px">📍 88 Iron Street, Your City · 📞 (000) 000-0000</p>
+      </div>
+      <form onsubmit="event.preventDefault();this.innerHTML='<h3 style=&quot;font-size:44px&quot;>You’re in!</h3><p style=&quot;font-weight:600&quot;>We’ll text you within the hour to book your free week.</p>'">
+        <input required placeholder="Full name" aria-label="Full name">
+        <input type="tel" required placeholder="Phone" aria-label="Phone">
+        <select aria-label="Goal"><option>Get stronger</option><option>Lose weight</option><option>Improve fitness</option><option>Personal coaching</option></select>
+        <button class="btn" type="submit">Claim my free week</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Forge Athletics</span>
+    <span>Instagram · Google Maps · Member app</span>
+  </div>
+</footer>
+
+</body>
+</html>
